@@ -1,63 +1,41 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para cargar escenas
+using UnityEngine.SceneManagement;
+using UnityEngine.TextCore; // Necesario para cargar escenas
 
 public class MainMenu : MonoBehaviour
 {
     [Header("Paneles (Opcional si usas escenas para todo)")]
     [SerializeField] private GameObject panelMenu;
-    [SerializeField] private GameObject panelAR;
-    [SerializeField] private GameObject panelMinijuego;
+    [SerializeField] private GameObject panelConfiguracion;
 
-    // Métodos para cargar escenas independientes
-    public void IrAInstrucciones()
+    private void Start()
     {
-        SceneManager.LoadScene("Sandbox_Instrucciones");
+        panelMenu = GameObject.Find("PanelMenu");
+        panelMenu.SetActive(true);
+        panelConfiguracion = GameObject.Find("PanelConfiguracion");
+        panelConfiguracion.SetActive(false);
+    }
+    // Mï¿½todos para cargar escenas independientes
+    public void VerVideo()
+    {
+        SceneManager.LoadScene("VideoScene");
     }
 
-    public void IrAR()
+    public void VerConfiguracion()
     {
-        SceneManager.LoadScene("NessieVR");
+        if (panelMenu == true)
+        {
+            panelConfiguracion.SetActive(true);
+            panelMenu.SetActive(false); 
+        }
+        else
+        {
+            panelConfiguracion.SetActive(false);
+            panelMenu.SetActive(true); 
+        }
+
     }
-
-    public void IrAManipular()
-    {
-        SceneManager.LoadScene("PruebasManipular");
-    }
-
-    public void IrAVideoTrailer()
-    {
-        SceneManager.LoadScene("Sandbox_Video");
-    }
-
-    public void AbrirAR()
-    {
-        // Si la AR sigue siendo un panel en esta escena:
-        if (panelMenu != null) panelMenu.SetActive(false);
-        if (panelAR != null) panelAR.SetActive(true);
-        if (panelMinijuego != null) panelMinijuego.SetActive(false);
-
-        // Si prefieres que AR sea otra escena, cambia esto por: SceneManager.LoadScene("NombreEscenaAR");
-    }
-
-    public void AbrirMinijuego()
-    {
-        // Si el minijuego sigue siendo un panel:
-        if (panelMenu != null) panelMenu.SetActive(false);
-        if (panelAR != null) panelAR.SetActive(false);
-        if (panelMinijuego != null) panelMinijuego.SetActive(true);
-    }
-
-    public void VolverAlMenu()
-    {
-        // Si estás en otra escena y quieres volver al menú principal:
-        // SceneManager.LoadScene("MenuEscena");
-
-        // Si es para ocultar paneles en la misma escena:
-        if (panelAR != null) panelAR.SetActive(false);
-        if (panelMinijuego != null) panelMinijuego.SetActive(false);
-        if (panelMenu != null) panelMenu.SetActive(true);
-    }
-
+    
     public void SalirJuego()
     {
         Debug.Log("Saliendo del juego...");
