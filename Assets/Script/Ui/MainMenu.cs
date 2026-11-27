@@ -23,17 +23,16 @@ public class MainMenu : MonoBehaviour
 
     public void VerConfiguracion()
     {
-        if (panelMenu == true)
+        if (panelMenu.activeSelf)
         {
             panelConfiguracion.SetActive(true);
-            panelMenu.SetActive(false); 
+            panelMenu.SetActive(false);
         }
         else
         {
             panelConfiguracion.SetActive(false);
-            panelMenu.SetActive(true); 
+            panelMenu.SetActive(true);
         }
-
     }
     
     public void SalirJuego()
