@@ -10,9 +10,9 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        panelMenu = GameObject.Find("PanelMenu");
+        panelMenu = GameObject.Find("MenuPrincipal");
         panelMenu.SetActive(true);
-        panelConfiguracion = GameObject.Find("PanelConfiguracion");
+        panelConfiguracion = GameObject.Find("Configuracion");
         panelConfiguracion.SetActive(false);
     }
     // M�todos para cargar escenas independientes
