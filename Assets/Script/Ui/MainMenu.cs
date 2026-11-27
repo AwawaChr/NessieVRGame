@@ -21,20 +21,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("VideoScene");
     }
 
-    public void VerConfiguracion()
+    public void AbrirConfiguracion()
     {
-        if (panelMenu.activeSelf)
-        {
-            panelConfiguracion.SetActive(true);
-            panelMenu.SetActive(false);
-        }
-        else
-        {
-            panelConfiguracion.SetActive(false);
-            panelMenu.SetActive(true);
-        }
+        panelMenu.SetActive(false);
+        panelConfiguracion.SetActive(true);
     }
-    
+
+    public void VolverMenu()
+    {
+        panelConfiguracion.SetActive(false);
+        panelMenu.SetActive(true);
+    }
+
     public void SalirJuego()
     {
         Debug.Log("Saliendo del juego...");
