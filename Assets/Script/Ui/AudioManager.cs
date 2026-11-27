@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip sonidoPerder;
     public AudioClip sonidoGanar;
 
-    [Header("Música de fondo (opcional)")]
+    [Header("Música de fondo")]
     public AudioClip musicaFondo;
 
     private AudioSource efectos;
@@ -24,12 +25,13 @@ public class AudioManager : MonoBehaviour
     public float volumenEfectos = 1f;
     private Slider sliderEfectos;
 
-    [Header("Volumen Musica")]
+    [Header("Volumen música")]
     public float volumenMusica = 1f;
     private Slider sliderMusica;
 
     void Awake()
     {
+        // Evitar duplicados
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -39,6 +41,7 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // Crear fuentes de audio
         efectos = gameObject.AddComponent<AudioSource>();
         musica = gameObject.AddComponent<AudioSource>();
 
@@ -51,11 +54,33 @@ public class AudioManager : MonoBehaviour
         if (musicaFondo != null)
         {
             musica.clip = musicaFondo;
-            musica.Play();
         }
     }
 
-    // Conectar los Sliders de la escena actual
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += AlCargarEscena;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= AlCargarEscena;
+    }
+
+    // Controlar música al cambiar de escena
+    private void AlCargarEscena(Scene escena, LoadSceneMode modo)
+    {
+        if (escena.name == "MenuPrincipal")
+        {
+            ReproducirMusica();
+        }
+        else
+        {
+            DetenerMusica();
+        }
+    }
+
+    // Configurar sliders de la escena actual
     public void ConfigurarSliders(Slider sliderEfectosUI, Slider sliderMusicaUI)
     {
         sliderEfectos = sliderEfectosUI;
@@ -63,12 +88,14 @@ public class AudioManager : MonoBehaviour
 
         if (sliderEfectos != null)
         {
+            sliderEfectos.onValueChanged.RemoveListener(CambiarVolumenEfectos);
             sliderEfectos.SetValueWithoutNotify(volumenEfectos);
             sliderEfectos.onValueChanged.AddListener(CambiarVolumenEfectos);
         }
 
         if (sliderMusica != null)
         {
+            sliderMusica.onValueChanged.RemoveListener(CambiarVolumenMusica);
             sliderMusica.SetValueWithoutNotify(volumenMusica);
             sliderMusica.onValueChanged.AddListener(CambiarVolumenMusica);
         }
@@ -85,6 +112,7 @@ public class AudioManager : MonoBehaviour
         musica.volume = volumenMusica;
     }
 
+    // Sonidos de interfaz
     public void SonidoBoton()
     {
         if (sonidoBoton != null)
@@ -114,16 +142,20 @@ public class AudioManager : MonoBehaviour
         if (sonidoGanar != null)
             efectos.PlayOneShot(sonidoGanar, volumenEfectos);
     }
+
+    // Reproducir música
     public void ReproducirMusica()
     {
         if (musicaFondo != null && !musica.isPlaying)
         {
+            musica.clip = musicaFondo;
             musica.Play();
         }
     }
 
-        public void DetenerMusica()
-        {
-            musica.Stop();
-        }
+    // Detener música
+    public void DetenerMusica()
+    {
+        musica.Stop();
+    }
 }
