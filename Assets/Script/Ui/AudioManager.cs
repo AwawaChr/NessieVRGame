@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
     // Controlar música al cambiar de escena
     private void AlCargarEscena(Scene escena, LoadSceneMode modo)
     {
-        if (escena.name == "MenuPrincipal")
+        if (escena.name == "SampleScene")
         {
             ReproducirMusica();
         }

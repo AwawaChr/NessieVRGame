@@ -283,6 +283,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438872896784470139, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470260144213892233, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470260144213892233, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009928318097117484, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927325028139655601, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927325028139655601, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402251334270531683, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 497
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402251334270531683, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 746
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965188665211554869, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965188665211554869, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210333280783777697, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8616645354261321780, guid: 1882cf2c9012227418a6c93fb7e4e223, type: 3}
       propertyPath: m_Name
       value: Pentax Spotmatic D with lens TEXTURED
